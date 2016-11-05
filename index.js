@@ -1,3 +1,8 @@
+
+var MongoClient = require('mongodb').MongoClient,
+  co = require('co'),
+  assert = require('assert');
+
 var express = require('express');
 var app = express();
 
@@ -6,12 +11,12 @@ var text="";
 var findDocuments = function(db, callback) {
   text="";
   // Get the documents collection
-  var collection = db.collection('demo');
+  var collection = db.collection('inserts');
   // Find some documents
   collection.find({}).toArray(function(err, docs) {
     assert.equal(err, null);
     console.log("Found the following records");
-    text=String(docs);
+    console.log(docs);
     callback(docs);
   });
 }
@@ -29,8 +34,6 @@ app.get('/', function(request, response) {
 });
 
 app.get('/db', function(request, response) {
-  var MongoClient = require('mongodb').MongoClient
-  , assert = require('assert');
 
 // Connection URL
 var url = 'mongodb://heroku_9c85x4j1:v4fqtsggd87bq3ntfbjnnopp9a@ds145667.mlab.com:45667/heroku_9c85x4j1';
@@ -39,12 +42,9 @@ MongoClient.connect(url, function(err, db) {
   assert.equal(null, err);
   console.log("Connected correctly to server");
 
-  insertDocuments(db, function() {
     findDocuments(db, function() {
       db.close();
-      response.send(text);
-
-    });
+      console.log(text);
   });
 });
   
