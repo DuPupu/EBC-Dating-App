@@ -1,7 +1,7 @@
 {
-  "name": "node-js-getting-started",
-  "version": "0.2.5",
-  "description": "A sample Node.js app using Express 4",
+  "name": "EBC Product ",
+  "version": "0.0.1",
+  "description": "A sample Node.js / Express 4 / Bootstrap / MongoDB App to help boys and girls date after class",
   "engines": {
     "node": "5.9.1"
   },
@@ -22,9 +22,9 @@
     "url": "https://github.com/heroku/node-js-getting-started"
   },
   "keywords": [
-    "node",
-    "heroku",
-    "express"
+    "CityU",
+    "EBC",
+    "MEAN+Bootstrap"
   ],
-  "license": "MIT"
+  "license": ""
 }
