@@ -33,7 +33,7 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
-app.get('/db', function(request, response) {
+app.get('/getdb', function(request, response) {
 
 // Connection URL
 var url = 'mongodb://heroku_9c85x4j1:v4fqtsggd87bq3ntfbjnnopp9a@ds145667.mlab.com:45667/heroku_9c85x4j1';
@@ -42,12 +42,30 @@ MongoClient.connect(url, function(err, db) {
   assert.equal(null, err);
   console.log("Connected correctly to server");
 
-    findDocuments(db, function() {
+    findDocuments(db, function(docs) {
       db.close();
-      console.log(text);
+      response.send(docs);
   });
 });
-  
+});
+
+
+app.get('/setdb', function(request, response) {
+  console.log(request.url)
+  co(function*() {
+    // Connection URL
+    var db = yield MongoClient.connect('mongodb://heroku_9c85x4j1:v4fqtsggd87bq3ntfbjnnopp9a@ds145667.mlab.com:45667/heroku_9c85x4j1');
+    console.log("Connected correctly to server");
+    // Insert a single document
+    var json = {name:"DKSmith",gender:"m",avCode:"m001",where:"AC1"};
+    var r = yield db.collection('inserts').insertOne(json);
+    assert.equal(1, r.insertedCount);
+    // Close connection
+    db.close();
+    response.send("wrote");
+  }).catch(function(err) {
+    console.log(err.stack);
+  });
 
 });
 
