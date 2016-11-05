@@ -65,7 +65,7 @@ app.get('/setdb', function(request, response) {
     assert.equal(1, r.insertedCount);
     // Close connection
     db.close();
-    response.send("wrote");
+    response.send("wrote<br><br><a href='/getdb'>See database journals</a>");
   }).catch(function(err) {
     console.log(err.stack);
   });
