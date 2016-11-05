@@ -22,7 +22,7 @@ app.get('/home', function(request, response) {
         'x-sent': true
     }
   };
-    res.sendFile(fileName, options, function (err) {
+    res.sendFile('home.html', options, function (err) {
     if (err) {
       res.send(err);
       res.status(err.status).end();
