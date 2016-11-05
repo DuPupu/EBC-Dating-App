@@ -13,11 +13,8 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
-app.get('/fuck',{ gender: 'm' }, function(request, response) {
-  response.send('male');
-});
-app.get('/fuck',{ gender: 'f' }, function(request, response) {
-  response.send('female');
+app.get('/home', function(request, response) {
+  response.sendFile('/home.html');
 });
 
 app.listen(app.get('port'), function() {
