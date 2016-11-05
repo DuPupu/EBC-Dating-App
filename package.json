@@ -13,7 +13,8 @@
     "ejs": "2.4.1",
     "express": "4.13.3",
     "co":"4.6.0",
-    "assert":"1.4.1"
+    "assert":"1.4.1",
+    "mongodb":"2.2.11"
   },
   "repository": {
     "type": "git",
