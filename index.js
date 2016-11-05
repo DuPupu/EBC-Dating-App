@@ -13,8 +13,28 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
-app.get('/home', function(request, response) {
-  response.render('home.html');
+app.get('/file/:name', function (req, res, next) {
+
+  var options = {
+    root: __dirname + '/public/',
+    dotfiles: 'deny',
+    headers: {
+        'x-timestamp': Date.now(),
+        'x-sent': true
+    }
+  };
+
+  var fileName = req.params.name;
+  res.sendFile(fileName, options, function (err) {
+    if (err) {
+      console.log(err);
+      res.status(err.status).end();
+    }
+    else {
+      console.log('Sent:', fileName);
+    }
+  });
+
 });
 
 app.listen(app.get('port'), function() {
