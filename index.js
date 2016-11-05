@@ -14,23 +14,7 @@ app.get('/', function(request, response) {
 });
 
 app.get('/home', function(request, response) {
-  var options = {
-    root: __dirname + '/view/',
-    dotfiles: 'deny',
-    headers: {
-        'x-timestamp': Date.now(),
-        'x-sent': true
-    }
-  };
-    res.sendFile('home.html', options, function (err) {
-    if (err) {
-      res.send(err);
-      res.status(err.status).end();
-    }
-    else {
-      console.log('Sent:', fileName);
-    }
-  });
+  response.render('home.html');
 });
 
 app.listen(app.get('port'), function() {
