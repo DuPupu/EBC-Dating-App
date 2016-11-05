@@ -14,7 +14,7 @@ app.get('/', function(request, response) {
 });
 
 app.get('/home', function(request, response) {
-  response.sendFile('/home.html');
+  response.sendFile('home.html');
 });
 
 app.listen(app.get('port'), function() {
