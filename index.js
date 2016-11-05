@@ -14,7 +14,7 @@ app.get('/', function(request, response) {
 });
 
 app.get('/fuck', function(request, response) {
-  response.render('pages/index');
+  response.send('pages/index.ejs');
 });
 
 app.listen(app.get('port'), function() {
