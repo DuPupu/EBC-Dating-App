@@ -1,0 +1,150 @@
+<html>
+<head>
+	<title>Websocket JS Depth</title>
+
+	<script src="https://cdn.socket.io/socket.io-1.3.7.js"></script>
+	<style type="text/css">
+		
+		@font-face {
+		    font-family: BloombergFixed;
+		    src: url(Bloomberg-FixedU_N.ttf);
+		}
+
+		body{
+			font-family: BloombergFixed;
+			background-color: #000;
+			color: #FFF;
+			
+		}
+		.divTable{
+			float:right;
+		}
+		.divRow
+		    {
+		       display:table-row;
+		       width:auto;
+		    }
+		.Asks,.Askmo,.Bids,.Bidmo
+		    {
+		        float:left;/*fix for  buggy browsers*/
+		        display:table-column;
+		        width:100px;
+		        background-color:#000;
+		        font-size: 1em;
+		    }
+		.Askmo{
+			color:#F00;
+		}
+
+		.Bidmo{
+			color:#0F0;
+		}		
+	</style>
+</head>
+<body>
+	<div class="divTable">
+<div class="divRow">
+	<div class="Asks" id="a1">1</div>
+	<div class="Askmo" id="am1">2</div>
+</div>
+
+<div class="divRow">
+	<div class="Asks" id="a2">2</div>
+	<div class="Askmo" id="am2">2</div>
+</div>
+
+<div class="divRow">
+	<div class="Asks" id="a3">3</div>
+	<div class="Askmo" id="am3">2</div>
+</div>
+
+<div class="divRow">
+	<div class="Asks" id="a4">4</div>
+	<div class="Askmo" id="am4">2</div>
+</div>
+
+<div class="divRow">
+	<div class="Asks" id="a5">5</div>
+	<div class="Askmo" id="am5">2</div>
+</div>
+
+<div class="divRow">
+	<div class="Bids" id="a1">1</div>
+	<div class="Bidmo" id="bm1">2</div>
+</div>
+
+<div class="divRow">
+	<div class="Bids" id="b2">2</div>
+	<div class="Bidmo" id="bm2">2</div>
+</div>
+
+<div class="divRow">
+	<div class="Bids" id="b3">3</div>
+	<div class="Bidmo" id="bm3">2</div>
+</div>
+
+<div class="divRow">
+	<div class="Bids" id="b4">4</div>
+	<div class="Bidmo" id="bm4">2</div>
+</div>
+
+<div class="divRow">
+	<div class="Bids" id="b5">5</div>
+	<div class="Bidmo" id="bm5">2</div>
+</div>
+</div>
+
+</body>
+<script>
+		for (i=0;i<5;i++){
+			document.getElementsByClassName('Asks')[i].innerHTML="ASKS";
+			document.getElementsByClassName('Bids')[i].innerHTML="BIDS";
+		}
+		var socket = io('https://websocket.btcchina.com/');
+		socket.emit('subscribe', ['grouporder_cnybtc']);
+		socket.on('connect', function(){
+    	console.log("Hello,btcc!");
+	      	socket.on('grouporder', function (data) {
+	           	ref(data);});
+		});
+
+		function popr(i){
+			i.style.background ="red";
+			i.style.transition = "background 0.01s ease-in";
+
+			setTimeout(function() {
+			    i.style.transition = "background 1s ease-out";
+				i.style.background ="black";
+			},100);
+		}
+
+		function popg(i){
+			i.style.background ="green";
+			i.style.transition = "background 0.01s ease-in";
+			setTimeout(function() {
+			    i.style.transition = "background 1s ease-out";
+				i.style.background ="black";
+			},100);
+
+		}
+		
+		function ref(data){
+			rAsk=data['grouporder']['ask'];
+			rBid=data['grouporder']['bid'];
+			console.log(rAsk);
+			for (i=0;i<5;i++){
+				if(document.getElementsByClassName('Asks')[i].innerHTML>rAsk[i]['price']){popg(document.getElementsByClassName('Asks')[i]);}
+				if(document.getElementsByClassName('Asks')[i].innerHTML<rAsk[i]['price']){popr(document.getElementsByClassName('Asks')[i]);}
+				if(document.getElementsByClassName('Bids')[i].innerHTML>rBid[i]['price']){popg(document.getElementsByClassName('Bids')[i]);}
+				if(document.getElementsByClassName('Bids')[i].innerHTML<rBid[i]['price']){popr(document.getElementsByClassName('Bids')[i]);}
+				document.getElementsByClassName('Asks')[i].innerHTML=rAsk[i]['price'];
+				document.getElementsByClassName('Bids')[i].innerHTML=rBid[i]['price'];
+
+				document.getElementsByClassName('Askmo')[i].innerHTML=rAsk[i]['totalamount'];
+				document.getElementsByClassName('Bidmo')[i].innerHTML=rBid[i]['totalamount'];				
+			}
+
+		}
+
+	</script>
+</html>
