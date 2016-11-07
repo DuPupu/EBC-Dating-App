@@ -1,0 +1,30 @@
+{
+  "name": "EBC Product ",
+  "version": "0.0.1",
+  "description": "A sample Node.js / Express 4 / Bootstrap / MongoDB App to help boys and girls date after class",
+  "engines": {
+    "node": "5.9.1"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "ejs": "2.4.1",
+    "express": "4.13.3",
+    "co":"4.6.0",
+    "assert":"1.4.1",
+    "mongodb":"2.2.11",
+    "body-parser":"1.15.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/heroku/node-js-getting-started"
+  },
+  "keywords": [
+    "CityU",
+    "EBC",
+    "MEAN+Bootstrap"
+  ],
+  "license": ""
+}
