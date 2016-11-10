@@ -30,7 +30,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
-  response.render('pages/index');
+  response.send("<script>window.location='pair.html';</script>");
 });
 
 app.get('/getdb', function(request, response) {
