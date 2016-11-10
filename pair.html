@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>EBC Business Project</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="cookie.js"></script>
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script>
+
+    //MONGODB_URI: mongodb://heroku_9c85x4j1:v4fqtsggd87bq3ntfbjnnopp9a@ds145667.mlab.com:45667/heroku_9c85x4j1
+    dbjson = jQuery.getJSON("http://ebc-demo.herokuapp.com/getdb");
+    
+    </script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+      <nav class="navbar-inverse">
+        <div class="container">
+        <a class="navbar-brand" href="#">Find Your Stranger</a>
+        <p class="navbar-text navbar-right">Tiffany <a href="#" class="navbar-link" onclick="alert('You are our privileged Platium Member\nRemaining: 9999 times\nUntil:12/31/2099')"><b>Platium Member</b></a></p>
+
+        </div>
+    </nav>
+    <div class="container">
+        <script>document.write(dbjson)</script>
+            <br>
+            <img src="/0000.png" id="avatar" height="30%" width="30%" class="img-responsive center-block">
+            
+        <form action="setdb" method="get" role="form" id="logi" onsubmit="return false;">
+            
+            <div class="form-group">
+                <label for="">Your Nickname ...</label>
+                <input type="text" id="inputName" class="form-control" name="name" placeholder="Input field" required="required">
+                <input type="hidden" id="avCode" class="form-control" name="avCode">
+                <label for="">You are a ...</label>
+                <select name="gender" id="genderSelector" class="form-control" required="required" onchange="genderChanged(this)">
+                    <option value="">Select</option>
+                    <option value="m">Boy</option>
+                    <option value="f">Girl</option>
+                </select>     
+                <label for="">You wish to meet at ...</label>
+                <select name="venue" id="VenueSelector" class="form-control">
+                    <option value="AC1">AC1</option>
+                    <option value="AC2">AC2</option>
+                    <option value="AC3">AC3</option>
+                </select>                                
+            </div>
+            <button form="logi" type="submit" class="btn btn-lg btn-block btn-primary" onclick="checkit()">Pair Now!</button>
+        </form>
+    </div> <!-- /container -->
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    
+  </body>
+</html>
