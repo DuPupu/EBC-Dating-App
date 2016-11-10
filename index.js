@@ -72,7 +72,7 @@ app.get('/setdb', function(request, response) {
 
 });
 
-app.get('/cleardb', function(request, response) {
+app.get('/c', function(request, response) {
   // Connection URL
     var url = 'mongodb://heroku_9c85x4j1:v4fqtsggd87bq3ntfbjnnopp9a@ds145667.mlab.com:45667/heroku_9c85x4j1';
     // Use connect method to connect to the server
@@ -80,8 +80,6 @@ app.get('/cleardb', function(request, response) {
       db.collection('inserts').remove(); 
       response.send("Clear Collection `inserts` Done");
     });
-
-
 });
 
 app.listen(app.get('port'), function() {
