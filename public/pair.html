@@ -50,12 +50,6 @@
         <script>
         
         
-        setTimeout(function(){
-            dbjson=dbjson.responseJSON;
-            for (each in dbjson){
-                document.write(dbjson[each]);
-            }
-        },1000);
         setInterval(function(){
             if(document.getElementById("dydots").innerHTML.length>19){
                 document.getElementById("dydots").innerHTML="";
