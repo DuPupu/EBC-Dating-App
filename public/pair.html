@@ -53,7 +53,7 @@
             }
 
             if (ninGroup%2==0){
-                if (samevenuereq[ninGroup+1]!=0){
+                if (samevenuereq[ninGroup+1]!=undefined){
                     console.log(samevenuereq[ninGroup+1]);
                     pairHandler();
                     clearInterval(checkpairedinterval);
@@ -62,7 +62,7 @@
                     document.getElementById("pwhere").innerHTML=samevenuereq[ninGroup+1].where;
                 }
             }else{
-                if (samevenuereq[ninGroup-1]!=0){
+                if (samevenuereq[ninGroup-1]!=undefined){
                     console.log(samevenuereq[ninGroup-1]);
                     pairHandler();
                     clearInterval(checkpairedinterval);
