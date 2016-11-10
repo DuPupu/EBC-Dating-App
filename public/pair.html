@@ -25,32 +25,40 @@
         
     }
     lsJSON = localStorage
-    jQuery.getJSON("http://ebc-demo.herokuapp.com/getdb").done(function(json){
-        
-        var a = 0;
-        var ninGroup = 0;
-        for (each in json){
+    setInterval(function(){
+        jQuery.getJSON("http://ebc-demo.herokuapp.com/getdb").done(function(json){
             
-            j=json[each];
+            var a = 0;
+            var ninGroup = 0;
+            var samevenuereq = [];
+            for (each in json){
+                
+                j=json[each];
 
-            if((j.avCode == localStorage.avCode)){
-                a+=1;
-            }
-
-            
-            if ((j.avCode == localStorage.avCode)&&(j.name == localStorage.name)&&(j.gender == localStorage.gender)&&(j.where == localStorage.where)){
-                ninGroup = a;
-            }
-            
-         }
-            if(ninGroup==0){
-                    localStorage.submitted="0";
-                    window.location="home.html";
+                if((j.avCode == localStorage.avCode)){
+                    samevenuereq[a]=j;
+                    a+=1;
                 }
-            alert(ninGroup);
-        });
+
+                
+                if ((j.avCode == localStorage.avCode)&&(j.name == localStorage.name)&&(j.gender == localStorage.gender)&&(j.where == localStorage.where)){
+                    ninGroup = a;
+                }
+                
+            }
+                if(ninGroup==0){
+                        localStorage.submitted="0";
+                        window.location="home.html";
+                    }
+                if (samevenuereq[ninGroup]!=0){
+                    pairHandler();
+
+                }
+            });
+        },1000);
+
     $(document).ready(function () {
-     	$('.alert-autocloseable-success').hide();
+        $('.alert-autocloseable-success').hide();
         $('.alert-autocloseable-info').show();
          
     });
