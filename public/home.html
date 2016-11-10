@@ -20,7 +20,7 @@
     function genderChanged(e){
         var gender = e.value;
         avatarCode=gender+"00"+Math.floor(Math.random()*5+1);
-        document.getElementById("avatar").src="avatar/"+avatarCode+".jpeg";
+        document.getElementById("avatar").src="/"+avatarCode+".jpeg";
         localStorage.setItem("avatar", avatarCode);
         document.getElementById("avCode").value=localStorage.getItem("avatar");
     }
@@ -54,9 +54,9 @@
     </nav>
     <div class="container">
             <br>
-            <img src="avatar/0000.png" id="avatar" height="30%" width="30%" class="img-responsive center-block">
+            <img src="/0000.png" id="avatar" height="30%" width="30%" class="img-responsive center-block">
             
-        <form action="index.html" method="get" role="form" id="logi" onsubmit="return false;">
+        <form action="home.html" method="get" role="form" id="logi" onsubmit="return false;">
             
             <div class="form-group">
                 <label for="">Your Nickname ...</label>
