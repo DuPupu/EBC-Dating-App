@@ -41,13 +41,13 @@
             if ((j.avCode == localStorage.avCode)&&(j.name == localStorage.name)&&(j.gender == localStorage.gender)&&(j.where == localStorage.where)){
                 ninGroup = a;
             }
-            if(a==0){
-                localStorage.submitted="0";
-                window.location="home.html";
-            }
-         alert(a);
+            
          }
-
+            if(ninGroup==0){
+                    localStorage.submitted="0";
+                    window.location="home.html";
+                }
+            alert(ninGroup);
         });
     $(document).ready(function () {
      	$('.alert-autocloseable-success').hide();
