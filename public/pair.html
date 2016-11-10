@@ -25,7 +25,7 @@
         
     }
     lsJSON = localStorage
-    setInterval(function(){
+    var checkpairedinterval=setInterval(function(){
         jQuery.getJSON("http://ebc-demo.herokuapp.com/getdb").done(function(json){
             
             var a = 0;
@@ -52,6 +52,7 @@
                     }
                 if (samevenuereq[ninGroup]!=0){
                     pairHandler();
+                    clearInterval(checkpairedinterval);
 
                 }
             });
