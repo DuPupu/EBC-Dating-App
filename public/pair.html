@@ -30,21 +30,22 @@
         jQuery.getJSON("http://ebc-demo.herokuapp.com/getdb").done(function(json){
             
             var a = 0;
-            var ninGroup = 0;
+            var ninGroup = -1;
             var ninAll = 0;
             var samevenuereq = [];
             for (each in json){
                 j=json[each];
+                if((j.avCode == localStorage.avCode)){
+                    a+=1;
+                    samevenuereq[a]=j;
+                }
                 if ((j.avCode == localStorage.avCode)&&(j.name == localStorage.name)&&(j.gender == localStorage.gender)&&(j.where == localStorage.where)){
                     ninGroup = a;
                 }
-                if((j.avCode == localStorage.avCode)){
-                    samevenuereq[a]=j;
-                    a+=1;
-                }
+                
             }
 
-            if(ninGroup==0){
+            if(ninGroup==-1){
                     localStorage.submitted="0";
                     window.location="home.html";
             }
