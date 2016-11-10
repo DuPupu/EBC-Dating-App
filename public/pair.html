@@ -28,15 +28,27 @@
     jQuery.getJSON("http://ebc-demo.herokuapp.com/getdb").done(function(json){
         
         var a = 0;
+        var ninGroup = 0;
         for (each in json){
-            a+=1;
+            
             j=json[each];
-            if ((j.avCode == localStorage.avCode)&&(j.name == localStorage.name)&&(j.gender == localStorage.gender)&&(j.where == localStorage.where)){
-                alert(a);
-                alert(j);
+
+            if((j.avCode == localStorage.avCode)){
+                a+=1;
             }
-        }
-        })
+
+            
+            if ((j.avCode == localStorage.avCode)&&(j.name == localStorage.name)&&(j.gender == localStorage.gender)&&(j.where == localStorage.where)){
+                ninGroup = a;
+            }
+            if(a==0){
+                localStorage.submitted="0";
+                window.location="home.html";
+            }
+         alert(a);
+         }
+
+        });
     $(document).ready(function () {
      	$('.alert-autocloseable-success').hide();
         $('.alert-autocloseable-info').show();
