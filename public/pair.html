@@ -21,9 +21,8 @@
     jQuery.getJSON("http://ebc-demo.herokuapp.com/getdb").done(function(json){
         $('.alert-autocloseable-success').show();
         setTimeout(function(){$('.alert-autocloseable-info').show();},500);
-        
         for (each in json){
-            document.write(json[each]);
+            //document.write(json[each]);
         }
         })
     $(document).ready(function () {
