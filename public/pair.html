@@ -20,8 +20,8 @@
     //MONGODB_URI: mongodb://heroku_9c85x4j1:v4fqtsggd87bq3ntfbjnnopp9a@ds145667.mlab.com:45667/heroku_9c85x4j1
 
     function pairHandler(){
-        setTimeout(function(){$('.alert-autocloseable-info').hide();$('.alert-autocloseable-success').show();},100);
-        setTimeout(function(){$('.alert-autocloseable-success').hide();},5000);
+            setTimeout(function(){$('.alert-autocloseable-info').hide();$('.alert-autocloseable-success').show();},1000);
+            setTimeout(function(){$('.alert-autocloseable-success').hide();},5000);
         
     }
     lsJSON = localStorage
@@ -81,56 +81,42 @@
         <p class="navbar-text navbar-right">Tiffany <a href="#" class="navbar-link" onclick="alert('You are our privileged Platium Member\nRemaining: 9999 times\nUntil:12/31/2099')"><b>Platium Member</b></a></p>
         </div>
     </nav>
+
+    <br>
     <div class="container">
-        <script>
+
+    <div class="alert alert-info alert-autocloseable-info">
+            Searching for your partner... <br>Please wait<span id="dydots"></span>
+    </div>
+    <div class="alert alert-success alert-autocloseable-success">
+            Found one partner!
+    </div>
+
+
+    <div class="col-xs-6">
+            
+            <img src="/0000.png" id="avatar" height="20%" width="20%" class="img-responsive center-block">
+            
         
+    </div>
+    <div class="col-xs-6">
+            
+            <img src="/0000.png" id="avatar" height="20%" width="20%" class="img-responsive center-block">
+            
         
-        setInterval(function(){
-            if(document.getElementById("dydots").innerHTML.length>19){
-                document.getElementById("dydots").innerHTML="";
-            }else{
-                document.getElementById("dydots").innerHTML+=".";
-            }
-        },50);
-        </script>
-
-            
-            <br>
-            <div class="alert alert-info alert-autocloseable-info">
-        			Searching for your partner... <br>Please wait<span id="dydots"></span>
-            </div>
-            <div class="alert alert-success alert-autocloseable-success">
-        			Found one partner!
-            </div>
-            <img src="/0000.png" id="avatar" height="30%" width="30%" class="img-responsive center-block">
-            
-        <form action="setdb" method="get" role="form" id="logi" onsubmit="return false;">
-            
-            <div class="form-group">
-                <label for="">Your Nickname ...</label>
-                <input type="text" id="inputName" class="form-control" name="name" placeholder="Input field" required="required">
-                <input type="hidden" id="avCode" class="form-control" name="avCode">
-                <label for="">You are a ...</label>
-                <select name="gender" id="genderSelector" class="form-control" required="required" onchange="genderChanged(this)">
-                    <option value="">Select</option>
-                    <option value="m">Boy</option>
-                    <option value="f">Girl</option>
-                </select>     
-                <label for="">You wish to meet at ...</label>
-                <select name="venue" id="VenueSelector" class="form-control">
-                    <option value="AC1">AC1</option>
-                    <option value="AC2">AC2</option>
-                    <option value="AC3">AC3</option>
-                </select>                                
-            </div>
-            <button form="logi" type="submit" class="btn btn-lg btn-block btn-primary" onclick="checkit()">Pair Now!</button>
-        </form>
-    </div> <!-- /container -->
-
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    </div> 
+    </div>
     
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    
     
   </body>
+  <script>
+    setInterval(function(){
+        if(document.getElementById("dydots").innerHTML.length>19){
+            document.getElementById("dydots").innerHTML="";
+        }else{
+            document.getElementById("dydots").innerHTML+=".";
+        }
+    },50);
+    </script>
 </html>
