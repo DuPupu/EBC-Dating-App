@@ -20,7 +20,8 @@
     //MONGODB_URI: mongodb://heroku_9c85x4j1:v4fqtsggd87bq3ntfbjnnopp9a@ds145667.mlab.com:45667/heroku_9c85x4j1
     jQuery.getJSON("http://ebc-demo.herokuapp.com/getdb").done(function(json){
         $('.alert-autocloseable-success').show();
-        setTimeout(function(){$('.alert-autocloseable-info').show();},500);
+        setTimeout(function(){$('.alert-autocloseable-info').hide();},500);
+        setTimeout(function(){$('.alert-autocloseable-success').hide();},1000);
         for (each in json){
             //document.write(json[each]);
         }
