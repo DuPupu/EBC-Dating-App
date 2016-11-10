@@ -57,13 +57,13 @@
                     pairHandler();
                     clearInterval(checkpairedinterval);
                     if(a%2==1){
-                        document.getElementById("pavatar").src="/"+samevenuereq[a].avCode+".jpeg";
-                        document.getElementById("pname").innerHTML=samevenuereq[a].name;
-                        document.getElementById("pwhere").innerHTML=samevenuereq[a].where;
+                        document.getElementById("pavatar").src="/"+samevenuereq[ninGroup].avCode+".jpeg";
+                        document.getElementById("pname").innerHTML=samevenuereq[ninGroup].name;
+                        document.getElementById("pwhere").innerHTML=samevenuereq[ninGroup].where;
                     }else{
-                        document.getElementById("pavatar").src="/"+samevenuereq[a-2].avCode+".jpeg";
-                        document.getElementById("pname").innerHTML=samevenuereq[a-2].name;
-                        document.getElementById("pwhere").innerHTML=samevenuereq[a-2].where;
+                        document.getElementById("pavatar").src="/"+samevenuereq[ninGroup-2].avCode+".jpeg";
+                        document.getElementById("pname").innerHTML=samevenuereq[ninGroup-2].name;
+                        document.getElementById("pwhere").innerHTML=samevenuereq[ninGroup-2].where;
 
 
                     }
