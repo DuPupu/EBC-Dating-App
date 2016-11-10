@@ -18,7 +18,16 @@
     <script>
 
     //MONGODB_URI: mongodb://heroku_9c85x4j1:v4fqtsggd87bq3ntfbjnnopp9a@ds145667.mlab.com:45667/heroku_9c85x4j1
-    dbjson = jQuery.getJSON("http://ebc-demo.herokuapp.com/getdb");
+    jQuery.getJSON("http://ebc-demo.herokuapp.com/getdb").done(function(json){
+        for (each in json){
+            document.write(json[each]);
+        }
+        })
+    $(document).ready(function () {
+     	$('.alert-autocloseable-success').hide();
+         //$('.alert-autocloseable-success').show();
+         
+    });
     
     
     </script>
@@ -30,25 +39,40 @@
     <![endif]-->
   </head>
   <body>
-
+        
       <nav class="navbar-inverse">
         <div class="container">
         <a class="navbar-brand" href="#">Find Your Stranger</a>
         <p class="navbar-text navbar-right">Tiffany <a href="#" class="navbar-link" onclick="alert('You are our privileged Platium Member\nRemaining: 9999 times\nUntil:12/31/2099')"><b>Platium Member</b></a></p>
-
         </div>
     </nav>
     <div class="container">
         <script>
         
-        setTimeout(function(){dbjson=dbjson.responseJSON;for (each in dbjson){
-
-            document.write(each);
-        }},1000);
         
-        
+        setTimeout(function(){
+            dbjson=dbjson.responseJSON;
+            for (each in dbjson){
+                document.write(dbjson[each]);
+            }
+        },1000);
+        setInterval(function(){
+            if(document.getElementById("dydots").innerHTML.length>19){
+                document.getElementById("dydots").innerHTML="";
+            }else{
+                document.getElementById("dydots").innerHTML+=".";
+            }
+        },50);
         </script>
+
+            
             <br>
+            <div class="alert alert-info alert-autocloseable-info">
+        			Searching for your partner... <br>Please wait<span id="dydots"></span>
+            </div>
+            <div class="alert alert-success alert-autocloseable-success">
+        			Found one partner!
+            </div>
             <img src="/0000.png" id="avatar" height="30%" width="30%" class="img-responsive center-block">
             
         <form action="setdb" method="get" role="form" id="logi" onsubmit="return false;">
