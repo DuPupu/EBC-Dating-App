@@ -37,7 +37,9 @@
                 j=json[each];
                 if((j.avCode == localStorage.avCode)){
                     a+=1;
-                    samevenuereq[a]=j;
+                    console.log(a);
+                    console.log(j);
+                    samevenuereq.push(j);
                 }
                 if ((j.avCode == localStorage.avCode)&&(j.name == localStorage.name)&&(j.gender == localStorage.gender)&&(j.where == localStorage.where)){
                     ninGroup = a;
