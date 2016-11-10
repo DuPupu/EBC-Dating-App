@@ -27,11 +27,14 @@
         localStorage.setItem("avatar", avatarCode);
         document.getElementById("avCode").value=localStorage.getItem("avatar");
     }
-    function checkit(){
+    function lsHandler(){
         localStorage.setItem("avCode", avatarCode);
         localStorage.setItem("name", document.getElementById("inputName").value);
         localStorage.setItem("gender",document.getElementById("genderSelector").value);
         localStorage.setItem("where",document.getElementById("VenueSelector").value);
+    }
+    function checkit(){
+        
         if(document.getElementById("inputName").value==""||document.getElementById("genderSelector").value==""){
             alert("Please Complete Your Information");
             return false;
@@ -68,16 +71,16 @@
             
             <div class="form-group">
                 <label for="">Your Nickname ...</label>
-                <input type="text" id="inputName" class="form-control" name="name" placeholder="Input field" required="required">
-                <input type="hidden" id="avCode" class="form-control" name="avCode">
+                <input type="text" id="inputName" class="form-control" name="name" placeholder="Input field" required="required" onchange="lsHandler()">
+                <input type="hidden" id="avCode" class="form-control" name="avCode" onchange="lsHandler()">
                 <label for="">You are a ...</label>
-                <select name="gender" id="genderSelector" class="form-control" required="required" onchange="genderChanged(this)">
+                <select name="gender" id="genderSelector" class="form-control" required="required" onchange="genderChanged(this);lsHandler()">
                     <option value="">Select</option>
                     <option value="m">Boy</option>
                     <option value="f">Girl</option>
                 </select>     
                 <label for="">You wish to meet at ...</label>
-                <select name="venue" id="VenueSelector" class="form-control">
+                <select name="venue" id="VenueSelector" class="form-control" onchange="lsHandler()">
                     <option value="AC1">AC1</option>
                     <option value="AC2">AC2</option>
                     <option value="AC3">AC3</option>
