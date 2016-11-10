@@ -34,47 +34,40 @@
             var ninAll = 0;
             var samevenuereq = [];
             for (each in json){
-                
                 j=json[each];
-
                 if ((j.avCode == localStorage.avCode)&&(j.name == localStorage.name)&&(j.gender == localStorage.gender)&&(j.where == localStorage.where)){
                     ninGroup = a;
                 }
-
                 if((j.avCode == localStorage.avCode)){
                     samevenuereq[a]=j;
                     a+=1;
                 }
-
-                
-                
-                
-                
             }
-                if(ninGroup==0){
-                        localStorage.submitted="0";
-                        window.location="home.html";
-                    }
-                if (ninGroup%2==0){
-                    if (samevenuereq[ninGroup+1]!=0){
-                        console.log(samevenuereq[ninGroup+1]);
-                        pairHandler();
-                        clearInterval(checkpairedinterval);
-                        document.getElementById("pavatar").src="/"+samevenuereq[ninGroup+1].avCode+".jpeg";
-                        document.getElementById("pname").innerHTML=samevenuereq[ninGroup+1].name;
-                        document.getElementById("pwhere").innerHTML=samevenuereq[ninGroup+1].where;
-                    }
-                }else{
-                        console.log(samevenuereq[ninGroup+1]);
-                        pairHandler();
-                        clearInterval(checkpairedinterval);
-                        document.getElementById("pavatar").src="/"+samevenuereq[ninGroup-1].avCode+".jpeg";
-                        document.getElementById("pname").innerHTML=samevenuereq[ninGroup-1].name;
-                        document.getElementById("pwhere").innerHTML=samevenuereq[ninGroup-1].where;
-                    }
+
+            if(ninGroup==0){
+                    localStorage.submitted="0";
+                    window.location="home.html";
+            }
+
+            if (ninGroup%2==0){
+                if (samevenuereq[ninGroup+1]!=0){
+                    console.log(samevenuereq[ninGroup+1]);
+                    pairHandler();
+                    clearInterval(checkpairedinterval);
+                    document.getElementById("pavatar").src="/"+samevenuereq[ninGroup+1].avCode+".jpeg";
+                    document.getElementById("pname").innerHTML=samevenuereq[ninGroup+1].name;
+                    document.getElementById("pwhere").innerHTML=samevenuereq[ninGroup+1].where;
                 }
+            }else{
+                console.log(samevenuereq[ninGroup+1]);
+                pairHandler();
+                clearInterval(checkpairedinterval);
+                document.getElementById("pavatar").src="/"+samevenuereq[ninGroup-1].avCode+".jpeg";
+                document.getElementById("pname").innerHTML=samevenuereq[ninGroup-1].name;
+                document.getElementById("pwhere").innerHTML=samevenuereq[ninGroup-1].where;
                 }
-                
+            }
+
             });
         },1000);
 
