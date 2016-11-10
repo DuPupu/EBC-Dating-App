@@ -25,15 +25,19 @@
         
     }
     lsJSON = localStorage
+    
     var checkpairedinterval=setInterval(function(){
         jQuery.getJSON("http://ebc-demo.herokuapp.com/getdb").done(function(json){
             
             var a = 0;
+            var t = 0;
             var ninGroup = 0;
+            var ninAll = 0;
             var samevenuereq = [];
             for (each in json){
                 
                 j=json[each];
+                t+=1;
 
                 if((j.avCode == localStorage.avCode)){
                     samevenuereq[a]=j;
@@ -43,6 +47,7 @@
                 
                 if ((j.avCode == localStorage.avCode)&&(j.name == localStorage.name)&&(j.gender == localStorage.gender)&&(j.where == localStorage.where)){
                     ninGroup = a;
+                    ninAll = t;
                 }
                 
             }
@@ -53,6 +58,9 @@
                 if (samevenuereq[ninGroup]!=0){
                     pairHandler();
                     clearInterval(checkpairedinterval);
+                    document.getElementById("pavatar").src="/" +json[t].avCode+".jpeg";
+                    document.getElementById("pname").innerHTML=json[t].name;
+                    document.getElementById("pwhere").innerHTML=json[t].where;
 
                 }
             });
@@ -112,7 +120,6 @@
     <div class="col-xs-6">
             
             <img src="/0000.png" id="pavatar" height="80%" width="80%" class="img-responsive center-block">
-            <span class="glyphicon glyphicon-cutlery center-block" aria-hidden="true"></span>
 
             <h4>Nickname</h4>
             <span id="pname"></span> <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span><br><br>
@@ -136,5 +143,8 @@
             document.getElementById("dydots").innerHTML+=".";
         }
     },50);
+    document.getElementById("myavatar").src="/" +lsJSON.avCode+".jpeg";
+    document.getElementById("myname").innerHTML=lsJSON.name;
+    document.getElementById("mywhere").innerHTML=lsJSON.where;
     </script>
 </html>
