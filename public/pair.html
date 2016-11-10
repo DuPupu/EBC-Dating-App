@@ -18,7 +18,7 @@
     <script>
 
     //MONGODB_URI: mongodb://heroku_9c85x4j1:v4fqtsggd87bq3ntfbjnnopp9a@ds145667.mlab.com:45667/heroku_9c85x4j1
-    dbjson = jQuery.getJSON("http://ebc-demo.herokuapp.com/getdb");
+    dbjson = jQuery.getJSON("http://ebc-demo.herokuapp.com/getdb").responseJSON;
     
     </script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -38,7 +38,13 @@
         </div>
     </nav>
     <div class="container">
-        <script>document.write(dbjson)</script>
+        <script>
+        for (each in dbjson){
+
+            document.write(each);
+        }
+        
+        </script>
             <br>
             <img src="/0000.png" id="avatar" height="30%" width="30%" class="img-responsive center-block">
             
