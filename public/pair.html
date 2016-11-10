@@ -29,16 +29,16 @@
     var checkpairedinterval=setInterval(function(){
         jQuery.getJSON("http://ebc-demo.herokuapp.com/getdb").done(function(json){
             
-            var a = 0;
+            var a = -1;
             var ninGroup = -1;
             var ninAll = 0;
             samevenuereq = [];
             for (each in json){
                 j=json[each];
-                if((j.avCode == localStorage.avCode)){
-                    a+=1;
-                    console.log(a);
-                    console.log(j);
+                if((j.where == localStorage.where)){
+                    a=a+1;
+                    //console.log(a);
+                    console.log(j.where);
                     samevenuereq.push(j);
                 }
                 if ((j.avCode == localStorage.avCode)&&(j.name == localStorage.name)&&(j.gender == localStorage.gender)&&(j.where == localStorage.where)){
