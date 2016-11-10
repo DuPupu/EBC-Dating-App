@@ -30,14 +30,12 @@
         jQuery.getJSON("http://ebc-demo.herokuapp.com/getdb").done(function(json){
             
             var a = 0;
-            var t = 0;
             var ninGroup = 0;
             var ninAll = 0;
             var samevenuereq = [];
             for (each in json){
                 
                 j=json[each];
-                t+=1;
 
                 if((j.avCode == localStorage.avCode)){
                     samevenuereq[a]=j;
@@ -47,8 +45,8 @@
                 
                 if ((j.avCode == localStorage.avCode)&&(j.name == localStorage.name)&&(j.gender == localStorage.gender)&&(j.where == localStorage.where)){
                     ninGroup = a;
-                    ninAll = t;
                 }
+                
                 
             }
                 if(ninGroup==0){
@@ -58,9 +56,17 @@
                 if (samevenuereq[ninGroup]!=0){
                     pairHandler();
                     clearInterval(checkpairedinterval);
-                    document.getElementById("pavatar").src="/" +json[t].avCode+".jpeg";
-                    document.getElementById("pname").innerHTML=json[t].name;
-                    document.getElementById("pwhere").innerHTML=json[t].where;
+                    if(a%2==1){
+                        document.getElementById("pavatar").src="/"+samevenuereq[a].avCode+".jpeg";
+                        document.getElementById("pname").innerHTML=samevenuereq[a].name;
+                        document.getElementById("pwhere").innerHTML=samevenuereq[a].where;
+                    }else{
+                        document.getElementById("pavatar").src="/"+samevenuereq[a-2].avCode+".jpeg";
+                        document.getElementById("pname").innerHTML=samevenuereq[a-2].name;
+                        document.getElementById("pwhere").innerHTML=samevenuereq[a-2].where;
+
+
+                    }
 
                 }
             });
