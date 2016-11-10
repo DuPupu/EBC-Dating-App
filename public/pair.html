@@ -20,7 +20,7 @@
     //MONGODB_URI: mongodb://heroku_9c85x4j1:v4fqtsggd87bq3ntfbjnnopp9a@ds145667.mlab.com:45667/heroku_9c85x4j1
     localStorage.submitted="1";
     function pairHandler(){
-            setTimeout(function(){$('.alert-autocloseable-info').hide();$('.alert-autocloseable-success').show();},1000);
+            setTimeout(function(){$('.alert-autocloseable-info').hide();$('.alert-autocloseable-success').show();$('.pairDetails').show();},1000);
             setTimeout(function(){$('.alert-autocloseable-success').hide();},5000);
         
     }
@@ -62,17 +62,20 @@
                     document.getElementById("pwhere").innerHTML=samevenuereq[ninGroup+1].where;
                 }
             }else{
-                console.log(samevenuereq[ninGroup+1]);
-                pairHandler();
-                clearInterval(checkpairedinterval);
-                document.getElementById("pavatar").src="/"+samevenuereq[ninGroup-1].avCode+".jpeg";
-                document.getElementById("pname").innerHTML=samevenuereq[ninGroup-1].name;
-                document.getElementById("pwhere").innerHTML=samevenuereq[ninGroup-1].where;
+                if (samevenuereq[ninGroup-1]!=0){
+                    console.log(samevenuereq[ninGroup-1]);
+                    pairHandler();
+                    clearInterval(checkpairedinterval);
+                    document.getElementById("pavatar").src="/"+samevenuereq[ninGroup-1].avCode+".jpeg";
+                    document.getElementById("pname").innerHTML=samevenuereq[ninGroup-1].name;
+                    document.getElementById("pwhere").innerHTML=samevenuereq[ninGroup-1].where;
                 }
+            }   
             });
         },1000);
 
     $(document).ready(function () {
+        $('.pairDetails').hide();
         $('.alert-autocloseable-success').hide();
         $('.alert-autocloseable-info').show();
          
@@ -106,7 +109,7 @@
             Found one partner!
     </div>
 
-
+    <div class="pairDetails">
     <div class="col-xs-6">
             
             <img src="/0000.png" id="myavatar" height="80%" width="80%" class="img-responsive center-block">
@@ -136,6 +139,7 @@
             <h4>Place</h4>
             Front Gate, <span id="pwhere"></span><br><br>
     </div> 
+    </div>
     </div>
     
     
