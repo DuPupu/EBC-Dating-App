@@ -25,14 +25,14 @@
         
     }
     lsJSON = localStorage
-    
+    var samevenuereq=[];
     var checkpairedinterval=setInterval(function(){
         jQuery.getJSON("http://ebc-demo.herokuapp.com/getdb").done(function(json){
             
             var a = 0;
             var ninGroup = -1;
             var ninAll = 0;
-            var samevenuereq = [];
+            samevenuereq = [];
             for (each in json){
                 j=json[each];
                 if((j.avCode == localStorage.avCode)){
