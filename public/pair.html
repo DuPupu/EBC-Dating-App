@@ -18,12 +18,23 @@
     <script>
 
     //MONGODB_URI: mongodb://heroku_9c85x4j1:v4fqtsggd87bq3ntfbjnnopp9a@ds145667.mlab.com:45667/heroku_9c85x4j1
+
+    function pairHandler(){
+        setTimeout(function(){$('.alert-autocloseable-info').hide();$('.alert-autocloseable-success').show();},100);
+        setTimeout(function(){$('.alert-autocloseable-success').hide();},5000);
+        
+    }
+    lsJSON = localStorage
     jQuery.getJSON("http://ebc-demo.herokuapp.com/getdb").done(function(json){
-        $('.alert-autocloseable-success').show();
-        setTimeout(function(){$('.alert-autocloseable-info').hide();},1000);
-        setTimeout(function(){$('.alert-autocloseable-success').hide();},3000);
+        
+        var a = 0;
         for (each in json){
-            //document.write(json[each]);
+            a+=1;
+            j=json[each];
+            if ((j.avCode == localStorage.avCode)&&(j.name == localStorage.name)&&(j.gender == localStorage.gender)&&(j.where == localStorage.where)){
+                alert(a);
+                alert(j);
+            }
         }
         })
     $(document).ready(function () {
