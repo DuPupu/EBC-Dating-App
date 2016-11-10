@@ -19,6 +19,7 @@
     <script>
 
     //MONGODB_URI: mongodb://heroku_9c85x4j1:v4fqtsggd87bq3ntfbjnnopp9a@ds145667.mlab.com:45667/heroku_9c85x4j1
+    var avatarCode;
     function genderChanged(e){
         var gender = e.value;
         avatarCode=gender+"00"+Math.floor(Math.random()*5+1);
@@ -27,10 +28,15 @@
         document.getElementById("avCode").value=localStorage.getItem("avatar");
     }
     function checkit(){
+        localStorage.setItem("avCode", avatarCode);
+        localStorage.setItem("name", document.getElementById("inputName").value);
+        localStorage.setItem("gender",document.getElementById("genderSelector").value);
+        localStorage.setItem("where",document.getElementById("VenueSelector").value);
         if(document.getElementById("inputName").value==""||document.getElementById("genderSelector").value==""){
             alert("Please Complete Your Information");
             return false;
         }else{
+            
             document.getElementById("logi").submit();
         }
         
